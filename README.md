@@ -10,16 +10,16 @@ A GeekCash full node for building applications and services with Node.js. A node
 ```bash
 git clone https://github.com/geekcash/geekcash-node
 cd geekcash-node
-./bin/geekcash-node start
+./bin/geekcashcore-node.js start
 ```
 
 When running the start command, it will seek for a .geekcashcore folder with a geekcash-node.json conf file.
-If it doesn't exist, it will create it, with basic task to connect to dashd.
+If it doesn't exist, it will create it, with basic task to connect to geekcashd.
 
 Some plugins are available :
 
-- Insight-API : `./bin/geekcash-node addservice @geekcash/insight-api
-- Insight-UI : `./bin/geekcash-node addservice @geekcash/insight-ui`
+- Insight-API : `./bin/geekcashcore-node.js addservice @geekcash/insight-api
+- Insight-UI : `./bin/geekcashcore-node.js addservice @geekcash/insight-ui`
 
 You also might want to add these index to your dash.conf file :
 ```
@@ -35,21 +35,21 @@ npm install @geekcash/geekcash-node
 ```
 
 ```javascript
-const dashcore = require('@geekcash/geekcash-node');
+const geekcashcore = require('@geekcash/geekcash-node');
 const config = require('./geekcash-node.json');
 
-let node = dashcore.scaffold.start({ path: "", config: config });
+let node = geekcashcore.scaffold.start({ path: "", config: config });
 node.on('ready', function() {
     //GeekCash core started
-    dashd.on('tx', function(txData) {
-        let tx = new dashcore.lib.Transaction(txData);
+    geekcashd.on('tx', function(txData) {
+        let tx = new geekcashcore.lib.Transaction(txData);
     });
 });
 ```
 
 ## Prerequisites
 
-- GeekCash Core (dashd) (v0.12.1.x) with support for additional indexing *(see above)*
+- GeekCash Core (geekcashd) with support for additional indexing *(see above)*
 - Node.js v0.10, v0.12, v4 or v5
 - ZeroMQ *(libzmq3-dev for Ubuntu/Debian or zeromq on OSX)*
 - ~20GB of disk storage
@@ -79,13 +79,13 @@ There are several add-on services available to extend the functionality of Bitco
 
 - [Insight API](https://github.com/geekcash/insight-api/tree/master)
 - [Insight UI](https://github.com/geekcash/insight-ui/tree/master)
-- [Bitcore Wallet Service](https://github.com/geekcash/dashcore-wallet-service/tree/master)
+- [Bitcore Wallet Service](https://github.com/geekcash/geekcashcore-wallet-service/tree/master)
 
 ## Documentation
 
 - [Upgrade Notes](docs/upgrade.md)
 - [Services](docs/services.md)
-  - [GeekCashd](docs/services/dashd.md) - Interface to GeekCash Core
+  - [GeekCashd](docs/services/geekcashd.md) - Interface to GeekCash Core
   - [Web](docs/services/web.md) - Creates an express application over which services can expose their web/API content
 - [Development Environment](docs/development.md) - Guide for setting up a development environment
 - [Node](docs/node.md) - Details on the node constructor
@@ -95,7 +95,7 @@ There are several add-on services available to extend the functionality of Bitco
 
 ## Setting up dev environment (with Insight)
 
-Prerequisite : Having a dashd node already runing `dashd --daemon`.
+Prerequisite : Having a geekcashd node already runing `geekcashd --daemon`.
 
 GeekCash-node : `git clone https://github.com/geekcash/geekcash-node -b develop`
 Insight-api (optional) : `git clone https://github.com/geekcash/insight-api -b develop`
@@ -114,12 +114,12 @@ npm link ../insight-api
 npm link ../insight-ui
 ```
 
-Start with `./bin/geekcash-node start` to first generate a ~/.geekcashcore/geekcash-node.json file.
+Start with `./bin/geekcashcore-node.js start` to first generate a ~/.geekcashcore/geekcash-node.json file.
 Append this file with `"@geekcash/insight-ui"` and `"@geekcash/insight-api"` in the services array.
 
 ## Contributing
 
-Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/geekcash/dashcore/blob/master/CONTRIBUTING.md) file.
+Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/geekcash/geekcashcore/blob/master/CONTRIBUTING.md) file.
 
 ## License
 
