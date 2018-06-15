@@ -18,8 +18,8 @@ If it doesn't exist, it will create it, with basic task to connect to dashd.
 
 Some plugins are available :
 
-- Insight-API : `./bin/dashcore-node addservice @dashevo/insight-api
-- Insight-UI : `./bin/dashcore-node addservice @dashevo/insight-ui`
+- Insight-API : `./bin/dashcore-node addservice @geekcash/insight-api
+- Insight-UI : `./bin/dashcore-node addservice @geekcash/insight-ui`
 
 You also might want to add these index to your dash.conf file :
 ```
@@ -31,11 +31,11 @@ You also might want to add these index to your dash.conf file :
 ### As a library
 
 ```bash
-npm install @dashevo/dashcore-node
+npm install @geekcash/dashcore-node
 ```
 
 ```javascript
-const dashcore = require('@dashevo/dashcore-node');
+const dashcore = require('@geekcash/dashcore-node');
 const config = require('./dashcore-node.json');
 
 let node = dashcore.scaffold.start({ path: "", config: config });
@@ -115,7 +115,7 @@ npm link ../insight-ui
 ```
 
 Start with `./bin/dashcore-node start` to first generate a ~/.dashcore/dashcore-node.json file.
-Append this file with `"@dashevo/insight-ui"` and `"@dashevo/insight-api"` in the services array.
+Append this file with `"@geekcash/insight-ui"` and `"@geekcash/insight-api"` in the services array.
 
 ## Contributing
 
